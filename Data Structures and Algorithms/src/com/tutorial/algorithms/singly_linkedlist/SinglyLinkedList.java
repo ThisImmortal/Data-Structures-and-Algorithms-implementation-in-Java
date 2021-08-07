@@ -1,4 +1,4 @@
-package com.tutorial.singly.linkedlist;
+package com.tutorial.algorithms.singly_linkedlist;
 
 public class SinglyLinkedList {
 
