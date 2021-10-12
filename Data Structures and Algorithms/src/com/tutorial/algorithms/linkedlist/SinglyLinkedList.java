@@ -1,4 +1,5 @@
-package com.tutorial.algorithms.singly_linkedlist;
+package com.tutorial.algorithms.linkedlist;
+
 
 public class SinglyLinkedList {
 
@@ -111,6 +112,7 @@ public class SinglyLinkedList {
 	public ListNode deleteLast() {
 		
 		if(head == null || head.next == null) {
+			
 			return head;
 		}
 		
@@ -271,61 +273,123 @@ public class SinglyLinkedList {
 		return head;
 	}
 	
-
 	
+	//Check if LinkedList contains a loop
+	public boolean ifContainsLoop() {
+		ListNode fastPtr = head;
+		ListNode slowPtr = head;
+		
+		while(fastPtr!= null && fastPtr.next!=null) {
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+			
+			if(fastPtr == slowPtr) {
+				return true;
+			}
+		}
+		
+		return false;
+	
+	}
+	
+	
+	//Find start of a loop in singly LinkedList  -  1st PART (Floyd's cycle detection algorithm)
+	public ListNode findStartingOfLoop() {
+		ListNode fastPtr = head;
+		ListNode slowPtr = head;
+		
+		while(fastPtr!= null && fastPtr.next!=null) {
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+			
+			if(fastPtr == slowPtr) {
+				return getStartingNode(slowPtr);
+			}
+		}
+		
+		return null;
+	}
+	
+	//Find start of a loop in singly LinkedList  -  2nd PART (Floyd's cycle detection algorithm)
+	public ListNode getStartingNode(ListNode slowPtr) {
+		ListNode temp = head;
+		while(slowPtr!=temp) {
+			temp = temp.next;
+			slowPtr = slowPtr.next;
+		}
+		return temp;
+	}
+	
+	
+	//Remove a loop from singly LinkedList
+	public void removeLoopFromLinkedlist() {
+		
+		ListNode fastPtr = head;
+		ListNode slowPtr = head;
+		
+		while(fastPtr!=null && fastPtr.next!=null) {
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+			
+			if(fastPtr == slowPtr) {
+				removeLoop(slowPtr);
+				return;
+			}
+		}
+	}
+	
+	private void removeLoop(ListNode slowPtr) {
+		ListNode temp = head;
+		
+		while(temp.next != slowPtr.next) {
+			temp = temp.next;
+			slowPtr = slowPtr.next;
+			
+		}
+		
+		slowPtr.next = null;
+		
+	}
+
+	public void createLoopInLinkedList() {
+		ListNode first = new ListNode(1);
+		ListNode second = new ListNode(2);
+		ListNode third = new ListNode(3);
+		ListNode fourth = new ListNode(4);
+		ListNode fifth = new ListNode(5);
+		ListNode sixth = new ListNode(6);
+		
+		head = first;
+		first.next = second;
+		second.next = third;
+		third.next = fourth;
+		fourth.next = fifth;
+		fifth.next = sixth;
+		sixth.next = third;
+	}
 	
 	
 	public static void main(String [] args) {
 		
 		SinglyLinkedList sll = new SinglyLinkedList();
-//		sll.head = new ListNode(10);
-//		ListNode second = new ListNode(1);
-//		ListNode third = new ListNode(8);
-//		ListNode fourth = new ListNode(11);
-//		
-//		//Now we will connect them together to form a chain
-//		sll.head.next = second; // 10 --> 1
-//		second.next = third; // 10 --> 1 --> 8
-//		third.next = fourth; // 10 --> 1 --> 8 --> 11 --> null
-//		
-//		sll.display();
-//		System.out.println("Length is "+sll.length());
 		
-//		sll.insertFirst(10);
-//		sll.insertLast(8);
-//		sll.insertFirst(1);
-//		sll.insertLast(2);
-//		sll.insertFirst(4);
-		
-		sll.insert(1, 3);
-		sll.insert(2, 3);
-		sll.insert(3, 4);
-		sll.insert(4, 5);
-		sll.insert(5, 5);
-		sll.insert(6, 7);
-		sll.insert(7, 8);
-		sll.display();
-//		System.out.println(sll.deleteLast().data);
-//		System.out.println(sll.deleteLast().data);
-//		sll.delete(2);
-//		sll.display();
-		
-	System.out.println("Middle node: " + sll.findMiddle().data);
-	System.out.println("Nth node: " + sll.findNthFromEnd(4).data);
-	sll.removeDuplicates();
-	sll.display();
-	sll.insertInSortedList(6);
-	sll.display();
-		
-		
-		
-		
-		
-		
+		sll.createLoopInLinkedList();
+		System.out.println(sll.ifContainsLoop());
+		System.out.println(sll.findStartingOfLoop().data);
+		sll.removeLoopFromLinkedlist();
+		System.out.println(sll.ifContainsLoop());
 		
 	
 		
 		
+		
+//		sll.head = new ListNode(5);
+//		sll.head.next = new ListNode(6);
+//		sll.head.next.next = new ListNode(7);
+//		sll.display();
+//		head = sll.reverse(head);
+//		sll.display();
+//			
 	}
 }
 

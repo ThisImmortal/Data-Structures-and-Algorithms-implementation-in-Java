@@ -5,7 +5,10 @@ public class SplitCamelCaseIntoWords {
 	
 	
 	public static void main(String[] args) {
-		SplitCamelCaseIntoWords.SplitCamelCase("IAmTheBestProgrammer");
+//		SplitCamelCaseIntoWords.SplitCamelCase("IAmTheBestProgrammer");
+//		int[] a = {1,2,3};
+//		System.out.println(findMiddle(a));
+		
 	}
 
 	public static void SplitCamelCase(String camelCase) {
@@ -22,4 +25,5 @@ public class SplitCamelCaseIntoWords {
 		}
 		System.out.println(response);
 	}
+	
 }
