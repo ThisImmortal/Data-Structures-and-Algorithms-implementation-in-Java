@@ -12,8 +12,8 @@ public class Stack {
 		private int data;
 		private ListNode next;
 		
-		public ListNode(int date) {
-			this.data = date;
+		public ListNode(int data) {
+			this.data = data;
 		}
 	}
 	

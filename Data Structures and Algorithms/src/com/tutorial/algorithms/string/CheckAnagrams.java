@@ -4,6 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CheckAnagrams {
+	
+	public static void main(String[] args) {
+		
+		assert isAnagrams("listen", "silent");
+		assert !isAnagrams("listen", "silence");
+
+	}
 
 	
 	public static boolean isAnagrams(String str1, String str2) {
@@ -36,9 +43,5 @@ public class CheckAnagrams {
 		return true;
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(isAnagrams("listen", "silent"));
-
-	}
 
 }

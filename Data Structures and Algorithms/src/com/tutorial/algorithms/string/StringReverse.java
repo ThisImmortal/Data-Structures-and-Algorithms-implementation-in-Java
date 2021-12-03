@@ -3,9 +3,25 @@ package com.tutorial.algorithms.string;
 import java.util.Stack;
 
 public class StringReverse {
+	
+	
+	public static void main(String[] args) {
+		
+		assert reverse("java").equals("avaj");
+		assert reverse1("java").equals("avaj");
+		assert reverse2("java").equals("avaj");
+		
+	}
 
 	
+	//First and the easiest way
 	public static String reverse(String str) {
+		return new StringBuilder(str).reverse().toString();
+	}
+	
+	
+	//Second way with using stack
+	public static String reverse1(String str) {
 		Stack<Character>stack = new Stack<Character>();
 		char[]chars = str.toCharArray();
 		
@@ -21,13 +37,23 @@ public class StringReverse {
 				
 	}
 	
-	
-	
-	public static void main(String[] args) {
+	//Third way without stack
+	public static String reverse2(String str) {
 		
-		System.out.println(reverse(""));
+		if(str == null || str.isEmpty()) {
+			return str;
+		}
 		
-
+		char[] value = str.toCharArray();
+		for(int i = 0, j = str.length()-1; i < j; i++, j--) {
+			char temp = value[i];
+			value[i] = value[j];
+			value[j] = temp;			
+		}
+		
+		return new String(value);
 	}
+	
+	
 
 }

@@ -2,6 +2,17 @@ package com.tutorial.algorithms.string;
 
 public class Palindrome {
 	
+	
+	public static void main(String[] args) {
+		
+		assert isPalindrome("level");
+		assert !isPalindrome("java");
+		
+		assert isPalindrome1("level");
+		assert !isPalindrome1("java");
+	}
+	
+	
 	//Is String palindrome
 	public static boolean isPalindrome(String str) {
 		char[]chars = str.toCharArray();
@@ -22,12 +33,9 @@ public class Palindrome {
 	}
 	
 	//Is String palindrome - another way
-	public static boolean isPalindromeAnotherWay(String str) {
+	public static boolean isPalindrome1(String str) {
 		return (str == null || str.length() <= 1 || str.equals(new StringBuilder(str).reverse().toString()));
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(isPalindrome("ana"));
-	}
 
 }

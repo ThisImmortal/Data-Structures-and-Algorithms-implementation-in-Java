@@ -5,6 +5,12 @@ import java.util.regex.Pattern;
 
 public class CheckVowels {
 	
+	public static void main(String[] args) {
+		
+		assert checkVowels("java");
+		assert !checkVowels("jdk");
+	}
+	
 	//Check if a String has vowels or not
 	public static boolean checkVowels(String str) {
 		Pattern pattern = Pattern.compile("[AEIOUaeiou]");
@@ -37,8 +43,5 @@ public class CheckVowels {
 		System.out.println(count);
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(checkVowels("zrdfgj"));
-	}
 
 }
