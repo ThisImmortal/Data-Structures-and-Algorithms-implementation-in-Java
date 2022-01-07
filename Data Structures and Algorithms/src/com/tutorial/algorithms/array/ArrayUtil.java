@@ -1,6 +1,9 @@
 package com.tutorial.algorithms.array;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Stack;
 import java.util.stream.IntStream;
 
 public class ArrayUtil {
@@ -99,6 +102,45 @@ public class ArrayUtil {
 		return secondMax;
 	}
 	
+	//Find missing number in an array of n-1 distinct numbers. Mathemathical approach: the sum of first n natural
+	// numbers 1+2+3+4+...n = nx(n+1)/2
+	public static int findMissingNumber(int[]arr) {
+		int n = arr.length + 1;
+		
+		int sum = n * (n + 1)/2;
+		for(int num : arr) {
+			sum = sum - num;
+		}
+		
+		return sum;
+	}
+	
+	//Check if duplicate numbers in an array - The first way
+	public static boolean findDuplicate(int[]arr) {
+		
+		for(int i = 0; i < arr.length; i++) {
+			for(int j = i + 1; j < arr.length; j++) {
+				if(arr[i] == arr[j]) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	//Check if duplicate numbers in an array - The second way
+	//Set data structere does not allow duplicates
+	public static boolean findDuplicate2(int[]arr) {
+		Set<Integer> numbers = new HashSet<Integer>();
+		
+		for(int number : arr) {
+			if(numbers.add(number) == false) {
+				return true;
+			}			
+		}
+		return false;
+	}
+	
 	//Remove even integers from an array
 	public static int[] removeEven(int[]arr) {
 		int oddCount = 0;
@@ -118,6 +160,30 @@ public class ArrayUtil {
 		}
 		return oddArray;
 		
+	}
+	
+	//Next greater elements of an array
+	public static int[] nextGreaterElement(int[]arr) {
+		int[] result = new int[arr.length];
+		Stack<Integer> stack = new Stack<Integer>();
+		
+		for(int i = arr.length-1; i >= 0; i--) {
+			if(!stack.isEmpty()) {
+				while(!stack.isEmpty() && stack.peek() <= arr[i]) {
+					stack.pop();
+				}
+			}
+			
+			if(stack.isEmpty()) {
+				result[i] = -1;
+			}
+			else {
+				result[i] = stack.peek();
+			}
+			
+			stack.push(arr[i]);
+		}
+		return result;
 	}
 	
 	
@@ -141,11 +207,16 @@ public class ArrayUtil {
 //		System.out.println("original size: "+arr.length);
 //		arr = resize(arr, 10);
 //		System.out.println("size after resizing: "+arr.length);
+//		
+//		System.out.println(findSecondMax(arr));
+//		printArray(arr);
+//		arr = removeEven(arr);
+//		printArray(arr);
+		int[] nums = {1,7,5,4,2,9,6,8,3};
+//		System.out.println(findMissingNumber(nums));
+		System.out.println(Arrays.toString(nextGreaterElement(nums)));
 		
-		System.out.println(findSecondMax(arr));
-		printArray(arr);
-		arr = removeEven(arr);
-		printArray(arr);
+		// 7,9,9,9,9,-1,8,-1,-1
 		
 	}
 
