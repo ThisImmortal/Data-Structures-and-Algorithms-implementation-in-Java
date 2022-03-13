@@ -1,9 +1,10 @@
 # Data Structures & Algorithms (Implementation in Java)
 Data Structures and its implementations in Java are introduced in this repository.
 
-## I am planning to introduce data structures listed below:
+## Data structures:
 * LinkedList (Singly, Doubly, Circular)
 * Array
+* Matrix
 * Stack
 * String
 * Queue
@@ -11,7 +12,8 @@ Data Structures and its implementations in Java are introduced in this repositor
 * Heap
 
 ## Algorithms:
-
-
-*updating...*
+* Top String algorithms
+* Top Array algorithms
+* Dynamic Programming
+* Search (Linear, Binary)
 
