@@ -40,24 +40,23 @@ public class BinarySearchTree {
 		return root;
 	}
 	
-	public void levelOrder() {
-		if(root == null) {
-			return;
+	
+	
+	public TreeNode search(int key) {
+		return search(root, key);
+	}
+	
+	public TreeNode search(TreeNode root, int key) {
+		
+		if(root == null || root.data == key) { //base case
+			return root;
 		}
 		
-		Queue<TreeNode> queue = new LinkedList<BinarySearchTree.TreeNode>();
-		queue.offer(root);
-		
-		while(!queue.isEmpty()) {
-			TreeNode temp = queue.poll();
-			System.out.print(temp.data + " ");
-			
-			if(temp.left != null) {
-				queue.offer(temp.left);
-			}
-			if(temp.right != null) {
-				queue.offer(temp.right);
-			}
+		if(key < root.data) {
+			return search(root.left, key);
+		}
+		else {
+			return search(root.right, key);
 		}
 	}
 	
@@ -73,7 +72,12 @@ public class BinarySearchTree {
 		bst.insert(5);
 		bst.insert(6);
 		
-		bst.levelOrder();
+		if(null != bst.search(10)) {
+			System.out.println("Found!");
+		}
+		else {
+			System.out.println("Not Found!");
+		}
 	}
 	
 }

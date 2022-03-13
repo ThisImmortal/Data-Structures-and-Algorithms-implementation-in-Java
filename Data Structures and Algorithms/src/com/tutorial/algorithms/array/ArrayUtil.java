@@ -146,7 +146,7 @@ public class ArrayUtil {
 		int oddCount = 0;
 		
 		for(int i = 0; i < arr.length; i++) {
-			if(arr[i] % 2 == 0) {
+			if(arr[i] % 2 != 0) {
 				oddCount++;
 			}
 		}
@@ -154,7 +154,7 @@ public class ArrayUtil {
 		int[]oddArray = new int[oddCount];
 		int idx = 0;
 		for(int i = 0; i < arr.length; i++) {
-			if(arr[i] % 2 == 0) {
+			if(arr[i] % 2 != 0) {
 				oddArray[idx++] = arr[i];
 			}
 		}
