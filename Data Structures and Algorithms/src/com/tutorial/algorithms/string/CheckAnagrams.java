@@ -1,5 +1,6 @@
 package com.tutorial.algorithms.string;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,13 +8,43 @@ public class CheckAnagrams {
 	
 	public static void main(String[] args) {
 		
-		assert isAnagrams("listen", "silent");
-		assert !isAnagrams("listen", "silence");
-
+		assert isAnagram1("listen", "silent");
+		assert !isAnagram1("listen", "silence");
+		
+		assert isAnagram2("listen", "silent");
+		assert !isAnagram2("listen", "silence");
+		
+		
 	}
+	
+	
+	//Check if two strings are anagrams - first way
+	public static boolean isAnagram1(String str1, String str2){       
+	       
+		if(str1.length() != str2.length()){
+	            return false;
+	        }
+	       
+	        char[] chars = str1.toCharArray();
+	       
+	        for(char c : chars){
+	            int index = str2.indexOf(c);
+	            if(index != -1){
+	                str2 = str2.substring(0,index) 
+	                       + str2.substring(index +1, str2.length());
+	            }else{
+	                return false;
+	            }           
+	        }
+	       
+	        return str2.isEmpty();
+	    }
+
 
 	
-	public static boolean isAnagrams(String str1, String str2) {
+	//Check if two strings are anagrams - second way (Using HashMap)
+	public static boolean isAnagram2(String str1, String str2) {
+		
 		int l1 = str1.length();
 		int l2 = str2.length();
 		str1 = str1.toLowerCase();
@@ -41,6 +72,20 @@ public class CheckAnagrams {
 			}
 		}
 		return true;
+	}
+	
+	
+	
+	//Check if two strings are anagrams - third way. This method
+	public static boolean isAnagram3(String str1, String str2) {
+		
+		char[] charFromStr1 = str1.toCharArray();
+		char[] charFromStr2 = str2.toCharArray();
+		
+		Arrays.sort(charFromStr1);
+		Arrays.sort(charFromStr2);
+		
+		return charFromStr1.equals(charFromStr2);
 	}
 	
 
