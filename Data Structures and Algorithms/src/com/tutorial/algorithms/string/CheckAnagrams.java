@@ -14,6 +14,9 @@ public class CheckAnagrams {
 		assert isAnagram2("listen", "silent");
 		assert !isAnagram2("listen", "silence");
 		
+		assert isAnagram3("listen", "silent");
+		assert !isAnagram3("listen", "silence");
+		
 		
 	}
 	
@@ -76,7 +79,8 @@ public class CheckAnagrams {
 	
 	
 	
-	//Check if two strings are anagrams - third way. This method
+	/* Check if two strings are anagrams - third way. This method assumes that both strings
+	are not null and lowercase */
 	public static boolean isAnagram3(String str1, String str2) {
 		
 		char[] charFromStr1 = str1.toCharArray();
