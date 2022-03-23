@@ -11,6 +11,7 @@ public class StringReverse {
 		assert reverse1("java").equals("avaj");
 		assert reverse2("java").equals("avaj");
 		
+		
 	}
 
 	
@@ -18,6 +19,7 @@ public class StringReverse {
 	public static String reverse(String str) {
 		return new StringBuilder(str).reverse().toString();
 	}
+	
 	
 	
 	//Second way with using stack
@@ -53,6 +55,20 @@ public class StringReverse {
 		
 		return new String(value);
 	}
+	
+	
+	//Fourth way using recursion
+	 public static String reverse3(String str) {
+
+	        //base case to handle one char string and empty string
+	        if (str.length() < 2) {
+	            return str;
+	        }
+
+	        return reverse3(str.substring(1)) + str.charAt(0);
+
+	    }
+
 	
 	
 
